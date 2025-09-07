@@ -132,7 +132,7 @@
     }
     
     .home-btn {
-      width: 300px; /* 统一按钮宽度 */
+      width: 300px;
       padding: 20px;
       font-size: 20px;
     }
@@ -4867,7 +4867,7 @@
     }
   },
   {
-    "角色名": "幽幽子[舞踏会]",
+    "角色名": "幽々子[舞踏会]",
     "属性": "力",
     "面板": {
       "60": {
@@ -5241,7 +5241,7 @@
     }
   },
   {
-    "角色名": "早苗[奇迹]",
+    "角色名": "早苗[奇迹",
     "属性": "知",
     "面板": {
       "60": {
@@ -10869,42 +10869,57 @@
       document.getElementById('levelComparison').style.display = 'block';
     }
 
-    function showCharacterImage(name) {
-      const modal = document.getElementById("imageModal");
-      const modalImg = document.getElementById("charImage");
-      const captionText = document.getElementById("caption");
-      const zoomSlider = document.getElementById("zoomSlider");
-      const zoomValue = document.getElementById("zoomValue");
+function showCharacterImage(name) {
+  const modal = document.getElementById("imageModal");
+  const modalImg = document.getElementById("charImage");
+  const captionText = document.getElementById("caption");
+  const zoomSlider = document.getElementById("zoomSlider");
+  const zoomValue = document.getElementById("zoomValue");
 
-currentScale = 1;
-modalImg.style.transform = `scale(${currentScale})`;
-zoomSlider.value = 100;
-zoomValue.textContent = "100%";
-updateSliderThumb();
+  currentScale = 1;
+  modalImg.style.transform = `scale(${currentScale})`;
+  zoomSlider.value = 100;
+  zoomValue.textContent = "100%";
+  updateSliderThumb();
 
-// 对文件名进行 URL 编码
-const encodedName = encodeURIComponent(name);
+  // 先清空图片，显示空白
+  modalImg.src = '';
+  modalImg.style.opacity = '0';
 
-// 设置图片地址（去掉方括号，使用编码后的文件名）
-modalImg.src = `https://a.dlozs.top/${encodedName}.png`;
+  modalImg.onload = function() {
+    modalImg.style.opacity = '1';
+    modalImg.onload = null;
+  };
+  modalImg.onerror = function() {
+    modalImg.src = '';
+    modalImg.style.opacity = '1';
+    modalImg.onerror = null;
+  };
 
-captionText.innerHTML = name;
-modal.style.display = "block";
+  // ⚡ 在这里定义 encodedName
+  const encodedName = encodeURIComponent(name);
 
-      const imageWrapper = document.getElementById("imageWrapper");
-      imageWrapper.scrollLeft = 0;
-      imageWrapper.scrollTop = 0;
+  // 设置新图片路径
+  modalImg.src = `https://c.dlozs.top/${encodedName}.webp`;
+  captionText.innerHTML = name;
 
-      document.querySelector(".closeBtn").onclick = function() {
-        modal.style.display = "none";
-      };
+  modal.style.display = "block";
 
-      modal.onclick = function(e) {
-        if (e.target === modal) {
-          modal.style.display = "none";
-        }
-      };
+  const imageWrapper = document.getElementById("imageWrapper");
+  imageWrapper.scrollLeft = 0;
+  imageWrapper.scrollTop = 0;
+
+  document.querySelector(".closeBtn").onclick = function() {
+    modal.style.display = "none";
+  };
+
+  modal.onclick = function(e) {
+    if (e.target === modal) {
+      modal.style.display = "none";
     }
+  };
+}
+
 
     function updateSliderThumb() {
       const slider = document.getElementById('zoomSlider');
@@ -11386,4 +11401,3 @@ modal.style.display = "block";
   </script>
 </body>
 </html>
-
