@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>Eclipse多功能工具箱</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container" id="homePage">
+    <h2>Eclipse多功能工具箱</h2>
+    <div class="home-buttons">
+      <button class="home-btn" onclick="showPage('totalPanelCalc')">角色总面板计算</button>
+      <button class="home-btn" onclick="showPage('charDatabase')">角色数据库</button>
+      <button class="home-btn" onclick="showPage('equipDatabase')">装备数据库</button>
+    </div>
+  </div>
+
+  <div class="container" id="totalPanelCalc" style="display: none;">
+    <h2>角色总面板计算<button class="back-btn" onclick="showPage('homePage')">返回主页</button></h2>
+    <div class="filters">
+      <div style="position: relative;">
+        <label for="charInput">角色名</label>
+        <input type="text" id="charInput" placeholder="输入角色名或拼音">
+        <div id="charSuggestions" class="autocomplete-suggestions" style="display: none;"></div>
+      </div>
+      <div>
+        <label for="charLevel">角色等级</label>
+        <select id="charLevel">
+          <option value="60">60级</option>
+          <option value="65">65级</option>
+          <option value="70">70级</option>
+          <option value="75">75级</option>
+          <option value="80">80级</option>
+        </select>
+      </div>
+    </div>
+    <div class="equip-selection">
+      <h3>装备选择(0~6件)</h3>
+      <div id="equipInputs"></div>
+    </div>
+    <div class="filters">
+      <div>
+        <h3>继承面板A</h3>
+        <div class="filters" id="inheritA">
+          <div><label>体力</label><select data-prop="体力"></select></div>
+          <div><label>护盾</label><select data-prop="护盾"></select></div>
+          <div><label>break</label><select data-prop="break"></select></div>
+          <div><label>灵力</label><select data-prop="灵力"></select></div>
+          <div><label>攻击力</label><select data-prop="攻击力"></select></div>
+          <div><label>防御力</label><select data-prop="防御力"></select></div>
+          <div><label>灵击力</label><select data-prop="灵击力"></select></div>
+          <div><label>技术</label><select data-prop="技术"></select></div>
+          <div><label>充能</label><select data-prop="充能"></select></div>
+          <div><label>运</label><select data-prop="运"></select></div>
+        </div>
+      </div>
+      <div>
+        <h3>继承面板B</h3>
+        <div class="filters" id="inheritB">
+          <div><label>体力</label><select data-prop="体力"></select></div>
+          <div><label>护盾</label><select data-prop="护盾"></select></div>
+          <div><label>break</label><select data-prop="break"></select></div>
+          <div><label>灵力</label><select data-prop="灵力"></select></div>
+          <div><label>攻击力</label><select data-prop="攻击力"></select></div>
+          <div><label>防御力</label><select data-prop="防御力"></select></div>
+          <div><label>灵击力</label><select data-prop="灵击力"></select></div>
+          <div><label>技术</label><select data-prop="技术"></select></div>
+          <div><label>充能</label><select data-prop="充能"></select></div>
+          <div><label>运</label><select data-prop="运"></select></div>
+        </div>
+      </div>
+    </div>
+    <div class="total-panel">
+      <h3>总面板</h3>
+      <table id="totalPanelTable">
+        <thead>
+          <tr>
+            <th>体力</th>
+            <th>护盾</th>
+            <th>break</th>
+            <th>灵力</th>
+            <th>攻击力</th>
+            <th>防御力</th>
+            <th>灵击力</th>
+            <th>技术</th>
+            <th>充能</th>
+            <th>运</th>
+            <th>总面板</th>
+            <th>与12800差值</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td id="total_体力">-</td>
+            <td id="total_护盾">-</td>
+            <td id="total_break">-</td>
+            <td id="total_灵力">-</td>
+            <td id="total_攻击力">-</td>
+            <td id="total_防御力">-</td>
+            <td id="total_灵击力">-</td>
+            <td id="total_技术">-</td>
+            <td id="total_充能">-</td>
+            <td id="total_运">-</td>
+            <td id="total_总面板">-</td>
+            <td id="total_diff">-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <button id="backBtn" onclick="scrollToTop()">返回顶部</button>
+  </div>
+
+  <div class="container" id="charDatabase" style="display: none;">
+    <h2>角色数据库<button class="back-btn" onclick="showPage('homePage')">返回主页</button></h2>
+    <div class="filters">
+      <div>
+        <label for="nameFilter">角色名筛选</label>
+        <input type="text" id="nameFilter" placeholder="输入角色名">
+      </div>
+      <div>
+        <label for="pinyinFilter">拼音筛选</label>
+        <input type="text" id="pinyinFilter" placeholder="输入拼音">
+      </div>
+      <div>
+        <label for="attrFilter">属性筛选</label>
+        <select id="attrFilter">
+          <option value="">全部属性</option>
+          <option value="心">心</option>
+          <option value="技">技</option>
+          <option value="体">体</option>
+          <option value="力">力</option>
+          <option value="知">知</option>
+        </select>
+      </div>
+      <div>
+        <label for="levelFilter">等级筛选</label>
+        <select id="levelFilter">
+          <option value="60">60级</option>
+          <option value="65">65级</option>
+          <option value="70">70级</option>
+          <option value="75">75级</option>
+          <option value="80">80级</option>
+        </select>
+      </div>
+    </div>
+    <table id="charTable">
+      <thead>
+        <tr>
+          <th>角色名</th>
+          <th>属性</th>
+          <th>等级</th>
+          <th>体力</th>
+          <th>护盾</th>
+          <th>break</th>
+          <th>灵力</th>
+          <th>攻击力</th>
+          <th>防御力</th>
+          <th>灵击力</th>
+          <th>技术</th>
+          <th>充能</th>
+          <th>运</th>
+          <th>总面板</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div class="stats">
+      <span id="rowCount">显示 0 条记录</span>
+      <span>数据更新时间: 2023-11-05</span>
+    </div>
+    
+    <div class="add-character-panel" id="addCharacterPanel">
+      <div>
+        <label for="newCharName">添加新角色</label>
+        <input type="text" id="newCharName" placeholder="输入角色名">
+      </div>
+      <div>
+        <label for="newCharAttr">属性</label>
+        <select id="newCharAttr">
+          <option value="心">心</option>
+          <option value="技">技</option>
+          <option value="体">体</option>
+          <option value="力">力</option>
+          <option value="知">知</option>
+        </select>
+      </div>
+      <div>
+        <button class="add-btn" onclick="addNewCharacter()">+ 新增</button>
+      </div>
+    </div>
+    <div class="level-comparison" id="levelComparison" style="display: none;">
+      <h3>等级属性对比</h3>
+      <div class="comparison-grid" id="comparisonGrid"></div>
+    </div>
+    <button id="backBtn" onclick="scrollToTop()">返回顶部</button>
+  </div>
+
+  <div class="container" id="equipDatabase" style="display: none;">
+    <h2>装备数据库<button class="back-btn" onclick="showPage('homePage')">返回主页</button></h2>
+    <div class="filters">
+      <div>
+        <label for="equipNameFilter">装备名筛选</label>
+        <input type="text" id="equipNameFilter" placeholder="输入装备名">
+      </div>
+      <div>
+        <label for="equipAttrFilter">属性筛选</label>
+        <select id="equipAttrFilter">
+          <option value="">全部属性</option>
+          <option value="心">心</option>
+          <option value="技">技</option>
+          <option value="体">体</option>
+          <option value="力">力</option>
+          <option value="知">知</option>
+        </select>
+      </div>
+      <div>
+        <label for="equipLevelFilter">等级筛选</label>
+        <select id="equipLevelFilter">
+          <option value="30">30级</option>
+          <option value="35">35级</option>
+          <option value="40">40级</option>
+          <option value="45">45级</option>
+          <option value="50">50级</option>
+        </select>
+      </div>
+      <div>
+        <label for="equipSortSelect">排序方式</label>
+        <select id="equipSortSelect">
+          <option value="">默认排序</option>
+          <option value="体力">体力</option>
+          <option value="护盾">护盾</option>
+          <option value="break">break</option>
+          <option value="灵力">灵力</option>
+          <option value="攻击力">攻击力</option>
+          <option value="防御力">防御力</option>
+          <option value="灵击力">灵击力</option>
+          <option value="技术">技术</option>
+          <option value="充能">充能</option>
+          <option value="运">运</option>
+          <option value="总面板">总面板</option>
+        </select>
+      </div>
+    </div>
+    <table id="equipTable">
+      <thead>
+        <tr>
+          <th>装备名</th>
+          <th>属性</th>
+          <th>等级</th>
+          <th>体力</th>
+          <th>护盾</th>
+          <th>break</th>
+          <th>灵力</th>
+          <th>攻击力</th>
+          <th>防御力</th>
+          <th>灵击力</th>
+          <th>技术</th>
+          <th>充能</th>
+          <th>运</th>
+          <th>总面板</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div class="stats">
+      <span id="equipRowCount">显示 0 条记录</span>
+      <span>数据更新时间: 2025-09-05</span>
+    </div>
+    <button id="backBtn" onclick="scrollToTop()">返回顶部</button>
+  </div>
+
+  <div id="imageModal" class="modal">
+    <span class="closeBtn">&times;</span>
+    <div class="modal-content-container">
+      <div class="zoom-controls">
+        <button class="zoom-btn" id="zoomIn">+</button>
+        <div class="custom-slider-container">
+          <input type="range" class="custom-slider" id="zoomSlider" min="10" max="200" value="100" step="1" orient="vertical">
+          <div class="slider-track"></div>
+          <div class="slider-thumb" id="sliderThumb"></div>
+        </div>
+        <button class="zoom-btn" id="zoomOut">-</button>
+        <div class="zoom-value" id="zoomValue">100%</div>
+        <button class="zoom-btn reset-btn" id="resetZoom">↺</button>
+      </div>
+      <div class="modal-image-wrapper" id="imageWrapper">
+        <img class="modal-content" id="charImage">
+      </div>
+    </div>
+    <div id="caption"></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="script.js"></script>
+</body>
+</html>
