@@ -72,40 +72,42 @@
     </div>
     <div class="total-panel">
       <h3>总面板</h3>
-      <table id="totalPanelTable">
-        <thead>
-          <tr>
-            <th>体力</th>
-            <th>护盾</th>
-            <th>break</th>
-            <th>灵力</th>
-            <th>攻击力</th>
-            <th>防御力</th>
-            <th>灵击力</th>
-            <th>技术</th>
-            <th>充能</th>
-            <th>运</th>
-            <th>总面板</th>
-            <th>与12800差值</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td id="total_体力">-</td>
-            <td id="total_护盾">-</td>
-            <td id="total_break">-</td>
-            <td id="total_灵力">-</td>
-            <td id="total_攻击力">-</td>
-            <td id="total_防御力">-</td>
-            <td id="total_灵击力">-</td>
-            <td id="total_技术">-</td>
-            <td id="total_充能">-</td>
-            <td id="total_运">-</td>
-            <td id="total_总面板">-</td>
-            <td id="total_diff">-</td>
-          </tr>
-        </tbody>
-      </table>
+      <div class="table-wrapper">
+        <table id="totalPanelTable">
+          <thead>
+            <tr>
+              <th>体力</th>
+              <th>护盾</th>
+              <th>break</th>
+              <th>灵力</th>
+              <th>攻击力</th>
+              <th>防御力</th>
+              <th>灵击力</th>
+              <th>技术</th>
+              <th>充能</th>
+              <th>运</th>
+              <th>总面板</th>
+              <th>与12800差值</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td id="total_体力">-</td>
+              <td id="total_护盾">-</td>
+              <td id="total_break">-</td>
+              <td id="total_灵力">-</td>
+              <td id="total_攻击力">-</td>
+              <td id="total_防御力">-</td>
+              <td id="total_灵击力">-</td>
+              <td id="total_技术">-</td>
+              <td id="total_充能">-</td>
+              <td id="total_运">-</td>
+              <td id="total_总面板">-</td>
+              <td id="total_diff">-</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
     <button id="backBtn" onclick="scrollToTop()">返回顶部</button>
   </div>
@@ -143,27 +145,29 @@
         </select>
       </div>
     </div>
-    <table id="charTable">
-      <thead>
-        <tr>
-          <th>角色名</th>
-          <th>属性</th>
-          <th>等级</th>
-          <th>体力</th>
-          <th>护盾</th>
-          <th>break</th>
-          <th>灵力</th>
-          <th>攻击力</th>
-          <th>防御力</th>
-          <th>灵击力</th>
-          <th>技术</th>
-          <th>充能</th>
-          <th>运</th>
-          <th>总面板</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+    <div class="table-wrapper">
+      <table id="charTable">
+        <thead>
+          <tr>
+            <th>角色名</th>
+            <th>属性</th>
+            <th>等级</th>
+            <th>体力</th>
+            <th>护盾</th>
+            <th>break</th>
+            <th>灵力</th>
+            <th>攻击力</th>
+            <th>防御力</th>
+            <th>灵击力</th>
+            <th>技术</th>
+            <th>充能</th>
+            <th>运</th>
+            <th>总面板</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
     <div class="stats">
       <span id="rowCount">显示 0 条记录</span>
       <span>数据更新时间: 2023-11-05</span>
@@ -241,27 +245,29 @@
         </select>
       </div>
     </div>
-    <table id="equipTable">
-      <thead>
-        <tr>
-          <th>装备名</th>
-          <th>属性</th>
-          <th>等级</th>
-          <th>体力</th>
-          <th>护盾</th>
-          <th>break</th>
-          <th>灵力</th>
-          <th>攻击力</th>
-          <th>防御力</th>
-          <th>灵击力</th>
-          <th>技术</th>
-          <th>充能</th>
-          <th>运</th>
-          <th>总面板</th>
-        </tr>
-      </thead>
-      <tbody></tbody>
-    </table>
+    <div class="table-wrapper">
+      <table id="equipTable">
+        <thead>
+          <tr>
+            <th>装备名</th>
+            <th>属性</th>
+            <th>等级</th>
+            <th>体力</th>
+            <th>护盾</th>
+            <th>break</th>
+            <th>灵力</th>
+            <th>攻击力</th>
+            <th>防御力</th>
+            <th>灵击力</th>
+            <th>技术</th>
+            <th>充能</th>
+            <th>运</th>
+            <th>总面板</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
     <div class="stats">
       <span id="equipRowCount">显示 0 条记录</span>
       <span>数据更新时间: 2025-09-05</span>

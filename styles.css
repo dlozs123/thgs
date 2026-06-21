@@ -59,13 +59,19 @@ label {
   color: #2c3e50;
 }
 
-table {
-  border-collapse: collapse;
-  width: 100%;
+.table-wrapper {
+  overflow: auto;
+  max-height: 75vh;
   margin-top: 10px;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  background: #fff;
 }
 
 th, td {
@@ -458,7 +464,6 @@ tr:hover {
 @media (max-width: 768px) {
   .filters { grid-template-columns: 1fr; }
   .container { padding: 15px; }
-  table { display: block; overflow-x: auto; }
   .comparison-grid { grid-template-columns: 1fr; }
   .modal-content-container {
     flex-direction: column;
@@ -476,9 +481,6 @@ tr:hover {
 }
 
 @media (max-width: 1200px) {
-  .container {
-    overflow-x: auto;
-  }
   table {
     min-width: 1000px;
   }
