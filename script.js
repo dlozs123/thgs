@@ -357,7 +357,7 @@ function showCharacterImage(name) {
   };
 
   const encodedName = encodeURIComponent(name);
-  modalImg.src = `https://c.dlozs.top/${encodedName}.webp`;
+  modalImg.src = `https://c.flan.uno/${encodedName}.webp`;
   captionText.innerHTML = name;
 
   modal.style.display = "block";
